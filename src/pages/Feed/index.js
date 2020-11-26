@@ -1,20 +1,18 @@
-import React, { useState, useEffect, useCallback } from 'react';
 import { StyleSheet, Text, Image, FlatList, Button, View, ScrollView, TextInput, TouchableOpacity } from 'react-native';
-import axios from 'axios'
+import React, { useState, useEffect, useCallback } from 'react';
 import LazyImage from '../../components/LazyImage';
 import { AsyncStorage } from 'react-native';
+import axios from 'axios';
 
-import options from '../../../assets/options.png';
-import like from '../../../assets/like.png';
 import comment from '../../../assets/comment.png';
+import like from '../../../assets/like.png';
 import send from '../../../assets/send.png';
 import save from '../../../assets/save.png';
-
 
 import { Container, Post, Header, Avatar, Name, Description, Loading } from './styles';
 import { withTheme } from 'styled-components';
 
-export default function Feed() {
+export default function Feed({ navigation }) {
   const [error, setError] = useState('');
   const [feed, setFeed] = useState([]);
   const [page, setPage] = useState(1);
@@ -55,17 +53,13 @@ export default function Feed() {
 
   async function refreshList() {
     setRefreshing(true);
-
     await loadPage(1, true);
-
     setRefreshing(false);
   }
 
   const onGet = (id) => {
     try {
-
       const value = AsyncStorage.getItem(id);
-
       if (value !== null) {
         // We have data!!
         setComentarios(value)
@@ -84,12 +78,9 @@ export default function Feed() {
     }
   }
 
-
-
   useEffect(() => {
     loadPage()
   }, []);
-
 
 
   const renderItem = ({ item }) => {
@@ -111,27 +102,23 @@ export default function Feed() {
 
         <View style={styles.footer}>
           <View style={styles.actions}>
-
             <View style={styles.leftActions}>
-              <TouchableOpacity style={styles.action}>
+              <TouchableOpacity onPress={() => navigation.navigate('Like')} style={styles.action}>
                 <Image
                   source={like}
                 />
               </TouchableOpacity>
-
-              <TouchableOpacity style={styles.action}>
+              <TouchableOpacity onPress={() => navigation.navigate('Comment')} style={styles.action}>
                 <Image
                   source={comment}
                 />
               </TouchableOpacity>
-
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('Login')}>
                 <Image
                   source={send}
                 />
               </TouchableOpacity>
             </View>
-
             <View>
               <TouchableOpacity>
                 <Image
@@ -160,24 +147,21 @@ export default function Feed() {
             </View>
           </View>
 
-        </View>
+          <View style={styles.commentSpace}>
+            <TextInput
+              style={styles.text}
+              value={text}
+              multiline={true}
+              onChangeText={(text) => setText(text)}
+              placeholder={"Adicionar um comentario..."}
+            />
 
-        <View>
-          <TextInput
-            multiline={true}
-            onChangeText={(text) => setText(text)}
-            placeholder={"Adicionar um comentario..."}
-            style={[styles.text]}
-            maxLength={MAX_LENGTH}
-            value={text}
-          />
-
-
-          <Button
-            title="Publicar"
-            onPress={() => onSave(String(item.id))}
-            accessibilityLabel="Adicionar Comentário">
-          </Button>
+            <TouchableOpacity onPress={() => onSave(String(item.id))}>
+              <Text style={styles.textButton}>
+                Publicar
+            </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </Post>
     )
@@ -212,24 +196,30 @@ export default function Feed() {
 const styles = StyleSheet.create(
   {
     text: {
-      fontSize: 18,
-      lineHeight: 1,//rever
-      color: "#333333",
-      padding: 25,
-      paddingTop: 15,
-      // height:50,
-      minHeight: 20,
+      color: '#000',
+      fontSize: 15,
+      lineHeight: 40,
+      width:'80%',
       borderTopWidth: 1,
-      borderWidth: 1,
-      margin: 10,
-      borderRadius: 16,
-      borderColor: "rgb(0,0,0)"
+      borderTopColor: '#a7a7a7',
     },
-
+    textButton: {
+      fontSize: 15,
+      color: '#35AAFF',
+      lineHeight: 40,
+      paddingLeft: 15,
+      borderTopWidth: 1,
+      borderTopColor: '#a7a7a7',
+    },
+    commentSpace:{
+      paddingTop:15,
+      paddingBottom:10,
+      flexDirection: 'row',
+    },
     post: {
-      marginVertical: 15
+      marginVertical: 15,
+      backgroundColor: '#ffffff'
     },
-
     postHeader: {
       flexDirection: 'row',
       justifyContent: 'space-between',
@@ -237,21 +227,17 @@ const styles = StyleSheet.create(
       alignItems: "center",
       backgroundColor: '#ffffff'
     },
-
     userName: {
       fontWeight: 'bold',
       marginRight: 260
     },
-
     place: {
       fontSize: 12,
       color: '#666',
     },
-
     footer: {
       paddingHorizontal: 15
     },
-
     actions: {
       paddingVertical: 15,
       flexDirection: 'row',

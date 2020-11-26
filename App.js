@@ -1,6 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Image, StyleSheet, Text, View } from 'react-native';
 import Feed from './src/pages/Feed';
+import Login from './src/pages/Login';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer, createAppContainer } from '@react-navigation/native'
 
@@ -17,7 +18,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Feed">
           <Stack.Screen
-            name="asd"
+            name="Feed"
             component={Feed}
             options={{
               headerTitle:
@@ -41,6 +42,18 @@ export default function App() {
               headerStyle: { height: 100 },
             }}
           />
+
+          <Stack.Screen
+            name="Login"
+            component={Login}
+            options={{
+              headerStyle: { height: 100 },
+              headerTitleAlign: 'center',
+              alignItems: 'center',
+              justifyContent: 'center',
+              headerTintColor: '#a1a1a1'
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </View>
@@ -51,7 +64,8 @@ const style = StyleSheet.create(
   {
     container: {
       flex: 1,
-      backgroundColor: '#fff'
+      backgroundColor: '#fff',
+      width:'100%'
     },
     logo: {
       flexDirection: 'row',
