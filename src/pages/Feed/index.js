@@ -103,12 +103,12 @@ export default function Feed({ navigation }) {
         <View style={styles.footer}>
           <View style={styles.actions}>
             <View style={styles.leftActions}>
-              <TouchableOpacity onPress={() => navigation.navigate('Like')} style={styles.action}>
+              <TouchableOpacity onPress={() => navigation.navigate('Curtidas')} style={styles.action}>
                 <Image
                   source={like}
                 />
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => navigation.navigate('Comment')} style={styles.action}>
+              <TouchableOpacity onPress={() => navigation.navigate('Comentários')} style={styles.action}>
                 <Image
                   source={comment}
                 />
@@ -139,11 +139,22 @@ export default function Feed({ navigation }) {
               <Text>{item.Subtitle}</Text>
             </View>
             <View>
-              <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Comentários')}>
                 <Text style={styles.comment}>Ver todos os comentários...</Text>
               </TouchableOpacity>
-              <Text>{item.comment}</Text>
+
+              <View style={styles.commentLine}>
+                <Image style={styles.commentPhoto} source={{ uri: item.profileComment.userPhoto1 }} />
+                <Text style={styles.commentName}>{item.profileComment.userName1}</Text>
+                <Text style={styles.commentCont}>{item.profileComment.comment1}</Text>
+              </View>
+              <View style={styles.commentLine}>
+                <Image style={styles.commentPhoto} source={{ uri: item.profileComment.userPhoto2 }} />
+                <Text style={styles.commentName}>{item.profileComment.userName2}</Text>
+                <Text style={styles.commentCont}>{item.profileComment.comment2}</Text>
+              </View>
               <Text>{comentarios}</Text>
+
             </View>
           </View>
 
@@ -199,7 +210,7 @@ const styles = StyleSheet.create(
       color: '#000',
       fontSize: 15,
       lineHeight: 40,
-      width:'80%',
+      width: '80%',
       borderTopWidth: 1,
       borderTopColor: '#a7a7a7',
     },
@@ -211,13 +222,35 @@ const styles = StyleSheet.create(
       borderTopWidth: 1,
       borderTopColor: '#a7a7a7',
     },
-    commentSpace:{
-      paddingTop:15,
-      paddingBottom:10,
+    commentSpace: {
+      paddingTop: 15,
+      paddingBottom: 10,
       flexDirection: 'row',
     },
+    commentLine: {
+      flexDirection: 'row',
+      alignItems: "center",
+      marginTop: 5,
+    },
+    commentPhoto: {
+      width: 20,
+      height: 20,
+      borderRadius: 16,
+      marginRight: 10
+    },
+    commentName: {
+      paddingRight: 5,
+      fontSize: 13,
+      fontWeight: 'bold',
+    },
+    commentCont: {
+      fontSize: 12,
+    },
+    comment: {
+      color: '#a7a7a7',
+    },
     post: {
-      marginVertical: 15,
+      marginVertical: 10,
       backgroundColor: '#ffffff'
     },
     postHeader: {
@@ -252,9 +285,6 @@ const styles = StyleSheet.create(
     likes: {
       fontWeight: 'bold',
       fontSize: 12
-    },
-    comment: {
-      color: '#a7a7a7',
     },
     description: {
       color: '#000',

@@ -2,6 +2,8 @@ import React from 'react';
 import { TouchableOpacity, Image, StyleSheet, Text, View } from 'react-native';
 import Feed from './src/pages/Feed';
 import Login from './src/pages/Login';
+import Curtidas from './src/pages/Likes';
+import Comentários from './src/pages/Comment';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer, createAppContainer } from '@react-navigation/native'
 
@@ -51,7 +53,31 @@ export default function App() {
               headerTitleAlign: 'center',
               alignItems: 'center',
               justifyContent: 'center',
-              headerTintColor: '#a1a1a1'
+              headerTintColor: '#000'
+            }}
+          />
+
+          <Stack.Screen
+            name="Curtidas"
+            component={Curtidas}
+            options={{
+              headerStyle: { height: 100 },
+              headerTitleAlign: 'center',
+              alignItems: 'center',
+              justifyContent: 'center',
+              headerTintColor: '#000'
+            }}
+          />
+
+          <Stack.Screen
+            name="Comentários"
+            component={Comentários}
+            options={{
+              headerStyle: { height: 100 },
+              headerTitleAlign: 'center',
+              alignItems: 'center',
+              justifyContent: 'center',
+              headerTintColor: '#000'
             }}
           />
         </Stack.Navigator>
@@ -65,7 +91,7 @@ const style = StyleSheet.create(
     container: {
       flex: 1,
       backgroundColor: '#fff',
-      width:'100%'
+      width: '100%'
     },
     logo: {
       flexDirection: 'row',
