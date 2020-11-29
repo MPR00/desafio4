@@ -213,6 +213,7 @@ const styles = StyleSheet.create(
       width: '80%',
       borderTopWidth: 1,
       borderTopColor: '#a7a7a7',
+      flexDirection: 'column'
     },
     textButton: {
       fontSize: 15,
@@ -250,15 +251,15 @@ const styles = StyleSheet.create(
       color: '#a7a7a7',
     },
     post: {
-      marginVertical: 10,
+      marginVertical: 5,
       backgroundColor: '#ffffff'
     },
     postHeader: {
       flexDirection: 'row',
+      alignItems: "center",
+      backgroundColor: '#ffffff',
       justifyContent: 'space-between',
       paddingHorizontal: 15,
-      alignItems: "center",
-      backgroundColor: '#ffffff'
     },
     userName: {
       fontWeight: 'bold',

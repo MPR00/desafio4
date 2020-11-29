@@ -18,7 +18,7 @@ export default function App() {
   return (
     <View style={style.container}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Feed">
+        <Stack.Navigator initialRouteName="Login">
           <Stack.Screen
             name="Feed"
             component={Feed}
@@ -91,34 +91,22 @@ const style = StyleSheet.create(
     container: {
       flex: 1,
       backgroundColor: '#fff',
-      width: '100%'
+      width: '100%',
+      flexDirection: 'row'
     },
     logo: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: "center",
-      paddingLeft: 130,
-      paddingRight: 70
+      paddingLeft: 80,
+      paddingRight: 80
     },
     camera: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: "center",
       paddingBottom: 8
     },
     igtv: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: "center",
       paddingBottom: 8,
       paddingRight: 15
     },
     enviar: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: "center",
-      paddingBottom: 8,
-      paddingRight: 15
+      paddingBottom: 8
     }
   }
 )

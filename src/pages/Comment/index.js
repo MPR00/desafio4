@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
     StyleSheet,
     View,
+    ScrollView,
     KeyboardAvoidingView,
     Image,
     TextInput,
@@ -11,135 +12,114 @@ import {
     Animated,
     Keyboard
 } from 'react-native';
+import like from '../../../assets/like.png';
 
-export default function index({ navigation }) {
-
-    const [offset] = useState(new Animated.ValueXY({ x: 0, y: 80 }))
-    const [opacity] = useState(new Animated.Value(0));
-    const [logo] = useState(new Animated.ValueXY({ x: 190, y: 54 }));
-
-    useEffect(() => {
-        Animated.parallel([
-            Animated.spring(offset.y, {
-                toValue: 0,
-                speed: 4,
-                bounciness: 30
-            }),
-            Animated.timing(opacity, {
-                toValue: 1,
-                duration: 300,
-            })
-        ]).start();
-
-    }, []);
-
+export default function index ({ navigation }) {
+    
     return (
-        <KeyboardAvoidingView style={styles.background}>
-            <View style={styles.containerLogo}>
-                <Animated.Image
-                    style={{
-                        width: logo.x,
-                        height: logo.y,
-                    }}
-                    source={require('../../../assets/logo.png')} />
+        <View style={styles.post}>
+            <View style={styles.footer}>
+                <ScrollView>
+
+                    <View style={styles.commentLine}>
+                        <Text style={styles.commentPhoto}>Foto</Text>
+                        <Text style={styles.commentName}>Nome</Text>
+                        <Text style={styles.commentCont}>conteudo</Text>
+                        <TouchableOpacity>
+                            <Image source={like} />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.commentLine}>
+                        <Text style={styles.commentPhoto}>Foto</Text>
+                        <Text style={styles.commentName}>Nome</Text>
+                        <Text style={styles.commentCont}>conteudo</Text>
+                        <TouchableOpacity>
+                            <Image source={like} />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.commentLine}>
+                        <Text style={styles.commentPhoto}>Foto</Text>
+                        <Text style={styles.commentName}>Nome</Text>
+                        <Text style={styles.commentCont}>Conteudo</Text>
+                        <TouchableOpacity>
+                            <Image source={like} />
+                        </TouchableOpacity>
+                    </View>
+
+                </ScrollView>
             </View>
 
-            <Animated.View
-                style={[
-                    styles.container,
-                    {
-                        opacity: opacity,
-                        transform: [
-                            { translateY: offset.y }
-                        ]
-                    }
-                ]}
-            >
+            <View style={styles.commentSubmit}>
                 <TextInput
-                    style={styles.input}
-                    placeholder="Email"
-                    autoCorrect={false}
-                    onChangeText={() => { }}
+                    style={styles.textSubmit}
+
+                    placeholder={"Adicionar um comentario..."}
                 />
 
-                <TextInput
-                    style={styles.input}
-                    placeholder="Senha"
-                    autoCorrect={false}
-                    onChangeText={() => { }}
-                />
-
-                <TouchableOpacity onPress={() => navigation.navigate('Feed')} style={styles.btnSubmit}>
-                    <Text style={styles.submitText}>Acessar</Text>
+                <TouchableOpacity onPress={() => onSave(String(item.id))}>
+                    <Text style={styles.textButtonSubmit}>
+                        Publicar
+                </Text>
                 </TouchableOpacity>
-
-                <TouchableOpacity style={styles.btnRegister}>
-                    <Text style={styles.registerText}>Criar conta gratuita</Text>
-                </TouchableOpacity>
-            </Animated.View >
-
-        </KeyboardAvoidingView>
+            </View>
+        </View>
     );
 }
 
-const styles = StyleSheet.create({
-    background: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#fff'
-    },
+const styles = StyleSheet.create(
+    {
+        post: {
+            flex: 1,
+            backgroundColor: '#fff',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+        },
+        footer: {
+            paddingHorizontal: 5,
+            paddingBottom: 10,
+        },
+        commentLine: {
+            marginTop: 5,
+            marginBottom: 5,
+            paddingBottom: 5,
+            borderBottomWidth: 1,
+            borderBottomColor: '#a7a7a7',
+            alignItems: "center",
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+        },
+        commentPhoto: {
+            width: 20,
+            height: 20,
+            borderRadius: 16,
+            marginRight: 10
+        },
+        commentName: {
+            fontSize: 15,
+            fontWeight: 'bold',
+            paddingRight: 5,
+        },
+        commentSubmit: {
+            paddingTop: 20,
+            flexDirection: 'row',
+            height: 70,
+            justifyContent: 'center',
+        },
+        textSubmit: {
+            width: '80%',
+            color: '#000',
+            fontSize: 15,
+            borderTopWidth: 1,
+            borderTopColor: '#a7a7a7',
+        },
+        textButtonSubmit: {
+            fontSize: 15,
+            color: '#35AAFF',
+            paddingLeft: 5,
+            paddingTop: 12,
+            borderTopWidth: 1,
+            borderTopColor: '#a7a7a7',
+        },
 
-    containerLogo: {
-        flex: 1,
-        justifyContent: "center",
-    },
-
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '90%',
-        paddingBottom: 50
-    },
-
-    input: {
-        backgroundColor: '#fafafa',
-        width: '90%',
-        height: 30,
-        marginBottom: 15,
-        color: '#222',
-        fontSize: 17,
-        borderRadius: 7,
-        borderWidth: 1,
-        borderColor: '#a7a7a7',
-        paddingLeft: 5
-    },
-
-    btnSubmit: {
-        backgroundColor: '#35AAFF',
-        width: '90%',
-        height: 45,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 7,
-    },
-
-    submitText: {
-        color: '#fff',
-        fontSize: 18
-    },
-
-    btnRegister: {
-        width: '90%',
-        marginTop: 15,
-        paddingTop: 5,
-        borderTopWidth: 1,
-        borderTopColor: '#a7a7a7',
-        alignItems: "center",
-    },
-
-    registerText: {
-        color: '#a7a7a7'
     }
-})
+)

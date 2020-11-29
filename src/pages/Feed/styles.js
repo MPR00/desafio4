@@ -5,7 +5,7 @@ export const Container = styled.View`
 `;
 
 export const Post = styled.View`
-  margin-top: 10px;
+  margin-top: 5px;
 `;
 
 export const Header = styled.View`
