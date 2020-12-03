@@ -103,12 +103,12 @@ export default function Feed({ navigation }) {
         <View style={styles.footer}>
           <View style={styles.actions}>
             <View style={styles.leftActions}>
-              <TouchableOpacity onPress={() => navigation.navigate('Curtidas')} style={styles.action}>
+              <TouchableOpacity style={styles.action}>
                 <Image
                   source={like}
                 />
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => navigation.navigate('Comentários')} style={styles.action}>
+              <TouchableOpacity style={styles.action}>
                 <Image
                   source={comment}
                 />
@@ -129,7 +129,7 @@ export default function Feed({ navigation }) {
           </View>
 
           <View>
-            <TouchableOpacity>
+            <TouchableOpacity  onPress={() => navigation.navigate('Curtidas')} >
               <Text style={styles.likes}>{item.likes} Likes</Text>
             </TouchableOpacity>
             <View style={styles.subtitle}>
