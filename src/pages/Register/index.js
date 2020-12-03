@@ -13,6 +13,11 @@ import {
 } from 'react-native';
 
 export default function index({ navigation }) {
+    /*State = {
+        name: '',
+        email: '',
+        password: ''
+    }*/
 
     const [offset] = useState(new Animated.ValueXY({ x: 0, y: 80 }))
     const [opacity] = useState(new Animated.Value(0));
@@ -35,6 +40,7 @@ export default function index({ navigation }) {
 
     return (
         <KeyboardAvoidingView style={styles.background}>
+            
             <View style={styles.containerLogo}>
                 <Animated.Image
                     style={{
@@ -55,27 +61,37 @@ export default function index({ navigation }) {
                     }
                 ]}
             >
+
                 <TextInput
                     style={styles.input}
-                    placeholder="Email"
+                    placeholder="Nome"
+                    autoFocus={true}
+                    //value={this.state.name}
                     autoCorrect={false}
-                    onChangeText={() => { }}
+                    onChangeText={() => { }} //{name => this.setState({name})}
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder="E-mail"
+                    autoFocus={true}
+                    //value={this.state.email}
+                    autoCorrect={false}
+                    onChangeText={() => { }} //{email => this.setState({email})}
                 />
 
                 <TextInput
                     style={styles.input}
                     placeholder="Senha"
+                    secureTextEntry={true}
+                    //value={this.state.password}
                     autoCorrect={false}
-                    onChangeText={() => { }}
+                    onChangeText={() => { }} //{password => this.setState({password})}
                 />
 
                 <TouchableOpacity onPress={() => navigation.navigate('Feed')} style={styles.btnSubmit}>
-                    <Text style={styles.submitText}>Acessar</Text>
+                    <Text style={styles.submitText}>Criar conta</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => navigation.navigate('Cadastro')} style={styles.btnRegister}>
-                    <Text style={styles.registerText}>Criar conta gratuita</Text>
-                </TouchableOpacity>
             </Animated.View >
 
         </KeyboardAvoidingView>

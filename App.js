@@ -2,6 +2,7 @@ import React from 'react';
 import { TouchableOpacity, Image, StyleSheet, Text, View } from 'react-native';
 import Feed from './src/pages/Feed';
 import Login from './src/pages/Login';
+import Cadastro from './src/pages/Register';
 import Curtidas from './src/pages/Likes';
 import Comentários from './src/pages/Comment';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -48,6 +49,18 @@ export default function App() {
           <Stack.Screen
             name="Login"
             component={Login}
+            options={{
+              headerStyle: { height: 100 },
+              headerTitleAlign: 'center',
+              alignItems: 'center',
+              justifyContent: 'center',
+              headerTintColor: '#000'
+            }}
+          />
+
+          <Stack.Screen
+            name="Cadastro"
+            component={Cadastro}
             options={{
               headerStyle: { height: 100 },
               headerTitleAlign: 'center',

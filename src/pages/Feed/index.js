@@ -113,7 +113,7 @@ export default function Feed({ navigation }) {
                   source={comment}
                 />
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+              <TouchableOpacity>
                 <Image
                   source={send}
                 />
@@ -139,7 +139,7 @@ export default function Feed({ navigation }) {
               <Text>{item.Subtitle}</Text>
             </View>
             <View>
-            <TouchableOpacity onPress={() => navigation.navigate('Comentários')}>
+              <TouchableOpacity onPress={() => navigation.navigate('Comentários')}>
                 <Text style={styles.comment}>Ver todos os comentários...</Text>
               </TouchableOpacity>
 
@@ -153,9 +153,8 @@ export default function Feed({ navigation }) {
                 <Text style={styles.commentName}>{item.profileComment.userName2}</Text>
                 <Text style={styles.commentCont}>{item.profileComment.comment2}</Text>
               </View>
-              <Text>{comentarios}</Text>
-
             </View>
+            <Text>{comentarios}</Text>
           </View>
 
           <View style={styles.commentSpace}>
