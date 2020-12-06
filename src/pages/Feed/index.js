@@ -97,8 +97,7 @@ export default function Feed({ navigation }) {
           aspectRatio={item.aspectRatio}
           shouldLoad={viewable.includes(item.id)}
           smallSource={{ uri: item.feedPhotoMini }}
-          source={{ uri: item.feedPhoto }}
-        />
+          source={{ uri: item.feedPhoto }} />
 
         <View style={styles.footer}>
           <View style={styles.actions}>

@@ -23,24 +23,71 @@ export default function index ({ navigation }) {
 
                     <View style={styles.commentLine}>
                         <Text style={styles.commentPhoto}>Foto</Text>
-                        <Text style={styles.commentName}>Nome</Text>
-                        <Text style={styles.commentCont}>conteudo</Text>
+                        <Text style={styles.commentName}>Paulo Soares</Text>
+                        <Text style={styles.commentCont}>Que amiga lida q eu tenho!</Text>
                         <TouchableOpacity>
                             <Image source={like} />
                         </TouchableOpacity>
                     </View>
                     <View style={styles.commentLine}>
                         <Text style={styles.commentPhoto}>Foto</Text>
-                        <Text style={styles.commentName}>Nome</Text>
-                        <Text style={styles.commentCont}>conteudo</Text>
+                        <Text style={styles.commentName}>Geisa Santana</Text>
+                        <Text style={styles.commentCont}>Sou a melhor fotógrafa!</Text>
                         <TouchableOpacity>
                             <Image source={like} />
                         </TouchableOpacity>
                     </View>
                     <View style={styles.commentLine}>
                         <Text style={styles.commentPhoto}>Foto</Text>
-                        <Text style={styles.commentName}>Nome</Text>
-                        <Text style={styles.commentCont}>Conteudo</Text>
+                        <Text style={styles.commentName}>Fernanda Paiva</Text>
+                        <Text style={styles.commentCont}>Voa voa...</Text>
+                        <TouchableOpacity>
+                            <Image source={like} />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.commentLine}>
+                        <Text style={styles.commentPhoto}>Foto</Text>
+                        <Text style={styles.commentName}>Jaqueline Neves</Text>
+                        <Text style={styles.commentCont}>uuuaaaauuuu!</Text>
+                        <TouchableOpacity>
+                            <Image source={like} />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.commentLine}>
+                        <Text style={styles.commentPhoto}>Foto</Text>
+                        <Text style={styles.commentName}>Gabriel Galardo</Text>
+                        <Text style={styles.commentCont}>Horrivel...</Text>
+                        <TouchableOpacity>
+                            <Image source={like} />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.commentLine}>
+                        <Text style={styles.commentPhoto}>Foto</Text>
+                        <Text style={styles.commentName}>Raimunda de Jesus</Text>
+                        <Text style={styles.commentCont}>Encantada...</Text>
+                        <TouchableOpacity>
+                            <Image source={like} />
+                        </TouchableOpacity>
+                    </View><View style={styles.commentLine}>
+                        <Text style={styles.commentPhoto}>Foto</Text>
+                        <Text style={styles.commentName}>Jurubeba Rios</Text>
+                        <Text style={styles.commentCont}>Eiiitaaa q perfeição!!!!</Text>
+                        <TouchableOpacity>
+                            <Image source={like} />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.commentLine}>
+                        <Text style={styles.commentPhoto}>Foto</Text>
+                        <Text style={styles.commentName}>Renata Freitas</Text>
+                        <Text style={styles.commentCont}>ai ai, assim vc me mata!</Text>
+                        <TouchableOpacity>
+                            <Image source={like} />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.commentLine}>
+                        <Text style={styles.commentPhoto}>Foto</Text>
+                        <Text style={styles.commentName}>Gustavo Petrovk</Text>
+                        <Text style={styles.commentCont}>Mais ou menos...</Text>
                         <TouchableOpacity>
                             <Image source={like} />
                         </TouchableOpacity>
