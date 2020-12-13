@@ -36,10 +36,4 @@ export const Loading = styled.ActivityIndicator.attrs({
 })`
   margin: 30px 0;
 `;
-export const ActionButton = styled.TouchableOpacity`
-  flex-direction: row;
-  justufy-content:space-round;
-  align-items: center;
-  padding: 5px;
-`;
 

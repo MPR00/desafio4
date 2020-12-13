@@ -26,6 +26,17 @@ import avatar9 from '../../../assets/avatar9.png';
 export default function index ({ navigation }) {
 
     const [liked, setLiked] = useState(false);
+    const [text, setText] = useState('')
+    const [comentarios, setComentarios] = useState([])
+
+    const onSave = async (id) => {
+        try {
+            await AsyncStorage.setItem(id, text);
+            setComentarios([...comentarios, ...text])
+        } catch (error) {
+            // Error saving data
+        }
+    }
     
     return (
         <View style={styles.post}>
@@ -235,9 +246,18 @@ export default function index ({ navigation }) {
             </View>
 
             <View style={styles.commentSubmit}>
+
+            <View style={styles.submitImage}>
+                    <TouchableOpacity>
+                        <Image style={styles.subPhoto} source={avatar2} />
+                    </TouchableOpacity>
+                </View>
+
                 <TextInput
                     style={styles.textSubmit}
-
+                    value={text}
+                    multiline={true}
+                    onChangeText={(text) => setText(text)}
                     placeholder={"Adicionar um comentario..."}
                 />
 
@@ -296,7 +316,7 @@ const styles = StyleSheet.create(
             justifyContent: 'center',
         },
         textSubmit: {
-            width: '80%',
+            width: '75%',
             color: '#000',
             fontSize: 15,
             borderTopWidth: 1,
@@ -310,6 +330,18 @@ const styles = StyleSheet.create(
             borderTopWidth: 1,
             borderTopColor: '#a7a7a7',
         },
+        submitImage: {
+            lineHeight: 40,
+            borderTopWidth: 1,
+            borderTopColor: '#a7a7a7',
+            paddingTop: 15,
+        },
+        subPhoto:{
+            width: 20,
+            height: 20,
+            borderRadius: 16,
+            marginRight: 10
+        }
 
     }
 )

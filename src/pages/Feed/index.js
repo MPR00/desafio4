@@ -10,6 +10,7 @@ import comment from '../../../assets/comment.png';
 import like from '../../../assets/like.png';
 import send from '../../../assets/send.png';
 import save from '../../../assets/save.png';
+import avatar5 from '../../../assets/avatar2.png';
 
 import { Container, Post, Header, Avatar, Name, Description, Loading, ActionButton } from './styles';
 // import { withTheme } from 'styled-components';
@@ -75,10 +76,11 @@ export default function Feed({ navigation }) {
 
   const onSave = async (id) => {
     try {
+      alert('Comentario publicado!')
       await AsyncStorage.setItem(id, text);
       setComentarios([...comentarios, ...text])
     } catch (error) {
-      // Error saving data
+      alert('Erro ao tentar adicionar comentario!')
     }
   }
 
@@ -98,12 +100,13 @@ export default function Feed({ navigation }) {
           </TouchableOpacity>
           <Name style={styles.userName}>{item.profile.userName}</Name>
         </Header>
-
+<ScrollView>
         <LazyImage
           aspectRatio={item.aspectRatio}
           shouldLoad={viewable.includes(item.id)}
           smallSource={{ uri: item.feedPhotoMini }}
           source={{ uri: item.feedPhoto }} />
+</ScrollView>
 
         <View style={styles.footer}>
           <View style={styles.actions}>
@@ -168,11 +171,21 @@ export default function Feed({ navigation }) {
                 <Text style={styles.commentName}>{item.profileComment.userName2}</Text>
                 <Text style={styles.commentCont}>{item.profileComment.comment2}</Text>
               </View>
+
             </View>
-            <Text>{comentarios}</Text>
           </View>
 
+                <View style={styles.commentLine}>
+                  <Text style={styles.commentCont}>{comentarios}</Text>
+                </View>
+
           <View style={styles.commentSpace}>
+          <View style={styles.submitImage}>
+              <TouchableOpacity>
+                <Image style={styles.commentPhoto} source={avatar5} />
+              </TouchableOpacity>
+            </View>
+              
             <TextInput
               style={styles.text}
               value={text}
@@ -220,99 +233,106 @@ export default function Feed({ navigation }) {
 
 const styles = StyleSheet.create(
   {
-    text: {
-      color: '#000',
-      fontSize: 15,
-      lineHeight: 40,
-      width: '80%',
-      borderTopWidth: 1,
-      borderTopColor: '#a7a7a7',
-      flexDirection: 'column'
-    },
-    textButton: {
-      fontSize: 15,
-      color: '#35AAFF',
-      lineHeight: 40,
-      paddingLeft: 15,
-      borderTopWidth: 1,
-      borderTopColor: '#a7a7a7',
-    },
-    commentSpace: {
-      paddingTop: 15,
-      paddingBottom: 10,
-      flexDirection: 'row',
-    },
-    commentLine: {
-      flexDirection: 'row',
-      alignItems: "center",
-      marginTop: 5,
-    },
-    commentPhoto: {
-      width: 20,
-      height: 20,
-      borderRadius: 16,
-      marginRight: 10
-    },
-    commentName: {
-      paddingRight: 5,
-      fontSize: 13,
-      fontWeight: 'bold',
-    },
-    commentCont: {
-      fontSize: 12,
-    },
-    comment: {
-      color: '#a7a7a7',
-    },
-    post: {
-      marginVertical: 5,
-      backgroundColor: '#ffffff'
-    },
-    postHeader: {
-      flexDirection: 'row',
-      alignItems: "center",
-      backgroundColor: '#ffffff',
-      justifyContent: 'space-between',
-      paddingHorizontal: 15,
-    },
-    userName: {
-      fontWeight: 'bold',
-      marginRight: 260
-    },
-    place: {
-      fontSize: 12,
-      color: '#666',
-    },
-    footer: {
-      paddingHorizontal: 15
-    },
-    actions: {
-      paddingVertical: 15,
-      flexDirection: 'row',
-      justifyContent: 'space-between'
-    },
-    action: {
-      marginRight: 8
-    },
-    leftActions: {
-      flexDirection: 'row',
-    },
-    likes: {
-      fontWeight: 'bold',
-      fontSize: 12
-    },
-    description: {
-      color: '#000',
-      lineHeight: 18
-    },
-    descName: {
-      fontWeight: 'bold',
-      paddingRight: 5
-    },
-    subtitle: {
-      flexDirection: 'row',
-      paddingVertical: 5
-    },
+    
+      submitImage: {
+        lineHeight: 40,
+        borderTopWidth: 1,
+        borderTopColor: '#a7a7a7',
+        paddingTop: 10
+      },
+      text: {
+        color: '#000',
+        fontSize: 15,
+        lineHeight: 40,
+        width: '73%',
+        borderTopWidth: 1,
+        borderTopColor: '#a7a7a7',
+        flexDirection: 'column'
+      },
+      textButton: {
+        fontSize: 15,
+        color: '#35AAFF',
+        lineHeight: 40,
+        paddingLeft: 15,
+        borderTopWidth: 1,
+        borderTopColor: '#a7a7a7',
+      },
+      commentSpace: {
+        paddingTop: 15,
+        paddingBottom: 10,
+        flexDirection: 'row',
+      },
+      commentLine: {
+        flexDirection: 'row',
+        alignItems: "center",
+        marginTop: 5,
+      },
+      commentPhoto: {
+        width: 20,
+        height: 20,
+        borderRadius: 16,
+        marginRight: 10
+      },
+      commentName: {
+        paddingRight: 5,
+        fontSize: 13,
+        fontWeight: 'bold',
+      },
+      commentCont: {
+        fontSize: 12,
+      },
+      comment: {
+        color: '#a7a7a7',
+      },
+      post: {
+        marginVertical: 5,
+        backgroundColor: '#ffffff'
+      },
+      postHeader: {
+        flexDirection: 'row',
+        alignItems: "center",
+        backgroundColor: '#ffffff',
+        justifyContent: 'space-between',
+        paddingHorizontal: 15,
+      },
+      userName: {
+        fontWeight: 'bold',
+        marginRight: 230
+      },
+      place: {
+        fontSize: 12,
+        color: '#666',
+      },
+      footer: {
+        paddingHorizontal: 15
+      },
+      actions: {
+        paddingVertical: 15,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+      },
+      action: {
+        marginRight: 8
+      },
+      leftActions: {
+        flexDirection: 'row',
+      },
+      likes: {
+        fontWeight: 'bold',
+        fontSize: 12
+      },
+      description: {
+        color: '#000',
+        lineHeight: 18
+      },
+      descName: {
+        fontWeight: 'bold',
+        paddingRight: 5
+      },
+      subtitle: {
+        flexDirection: 'row',
+        paddingVertical: 5
+      },
     iconRow: {
       flexDirection: "row",
       alignSelf: "stretch",
