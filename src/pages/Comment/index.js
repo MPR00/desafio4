@@ -12,9 +12,20 @@ import {
     Animated,
     Keyboard
 } from 'react-native';
-import like from '../../../assets/like.png';
+// import like from '../../../assets/like.png';
+import avatar1 from '../../../assets/avatar1.png';
+import avatar2 from '../../../assets/avatar2.png';
+import avatar3 from '../../../assets/avatar3.png';
+import avatar4 from '../../../assets/avatar4.png';
+import avatar5 from '../../../assets/avatar5.png';
+import avatar6 from '../../../assets/avatar6.png';
+import avatar7 from '../../../assets/avatar7.png';
+import avatar8 from '../../../assets/avatar8.png';
+import avatar9 from '../../../assets/avatar9.png';
 
 export default function index ({ navigation }) {
+
+    const [liked, setLiked] = useState(false);
     
     return (
         <View style={styles.post}>
@@ -22,74 +33,201 @@ export default function index ({ navigation }) {
                 <ScrollView>
 
                     <View style={styles.commentLine}>
-                        <Text style={styles.commentPhoto}>Foto</Text>
-                        <Text style={styles.commentName}>Paulo Soares</Text>
-                        <Text style={styles.commentCont}>Que amiga lida q eu tenho!</Text>
-                        <TouchableOpacity>
-                            <Image source={like} />
+                    <View style={styles.commentCont}>
+                            <TouchableOpacity>
+                                <Image style={styles.commentPhoto} source={avatar1} />
+                            </TouchableOpacity>
+                            <Text style={styles.commentName}>Paulo Soares</Text>
+                            <Text>Que amiga lida q eu tenho!</Text>
+                        </View>
+                        <TouchableOpacity 
+                            onPress={()=>{
+                            setLiked(!liked)
+                            }}>
+                         <Image
+                                source={!liked
+                                ? require("../Feed/images/heart.png")
+                                : require("../Feed/images/heart-outline.png")
+                            }
+                            style={{height: 20, width: 20}}
+                            resizeMode="cover"
+                            />
                         </TouchableOpacity>
                     </View>
                     <View style={styles.commentLine}>
-                        <Text style={styles.commentPhoto}>Foto</Text>
-                        <Text style={styles.commentName}>Geisa Santana</Text>
-                        <Text style={styles.commentCont}>Sou a melhor fotógrafa!</Text>
-                        <TouchableOpacity>
-                            <Image source={like} />
+                    <View style={styles.commentCont}>
+                            <TouchableOpacity>
+                                <Image style={styles.commentPhoto} source={avatar2} />
+                            </TouchableOpacity>
+                            <Text style={styles.commentName}>José Santana</Text>
+                            <Text>Sou o melhor fotógrafo!</Text>
+                        </View>
+                        <TouchableOpacity 
+                            onPress={()=>{
+                            setLiked(!liked)
+                            }}>
+                         <Image
+                                source={!liked
+                                ? require("../Feed/images/heart.png")
+                                : require("../Feed/images/heart-outline.png")
+                            }
+                            style={{height: 20, width: 20}}
+                            resizeMode="cover"
+                            />
                         </TouchableOpacity>
                     </View>
                     <View style={styles.commentLine}>
-                        <Text style={styles.commentPhoto}>Foto</Text>
-                        <Text style={styles.commentName}>Fernanda Paiva</Text>
-                        <Text style={styles.commentCont}>Voa voa...</Text>
-                        <TouchableOpacity>
-                            <Image source={like} />
+                    <View style={styles.commentCont}>
+                            <TouchableOpacity>
+                                <Image style={styles.commentPhoto} source={avatar3} />
+                            </TouchableOpacity>
+                            <Text style={styles.commentName}>Fernanda Paiva</Text>
+                            <Text>Voa voa voa voa voa voa...</Text>
+                        </View>
+                        <TouchableOpacity 
+                            onPress={()=>{
+                            setLiked(!liked)
+                            }}>
+                         <Image
+                                source={!liked
+                                ? require("../Feed/images/heart.png")
+                                : require("../Feed/images/heart-outline.png")
+                            }
+                            style={{height: 20, width: 20}}
+                            resizeMode="cover"
+                            />
                         </TouchableOpacity>
                     </View>
                     <View style={styles.commentLine}>
-                        <Text style={styles.commentPhoto}>Foto</Text>
-                        <Text style={styles.commentName}>Jaqueline Neves</Text>
-                        <Text style={styles.commentCont}>uuuaaaauuuu!</Text>
-                        <TouchableOpacity>
-                            <Image source={like} />
+                    <View style={styles.commentCont}>
+                            <TouchableOpacity>
+                                <Image style={styles.commentPhoto} source={avatar4} />
+                            </TouchableOpacity>
+                            <Text style={styles.commentName}>Jaqueline Neves</Text>
+                            <Text>uuuuuuaaaaaaauuuuuuu!</Text>
+                        </View>
+                        <TouchableOpacity 
+                            onPress={()=>{
+                            setLiked(!liked)
+                            }}>
+                         <Image
+                                source={!liked
+                                ? require("../Feed/images/heart.png")
+                                : require("../Feed/images/heart-outline.png")
+                            }
+                            style={{height: 20, width: 20}}
+                            resizeMode="cover"
+                            />
                         </TouchableOpacity>
                     </View>
                     <View style={styles.commentLine}>
-                        <Text style={styles.commentPhoto}>Foto</Text>
-                        <Text style={styles.commentName}>Gabriel Galardo</Text>
-                        <Text style={styles.commentCont}>Horrivel...</Text>
-                        <TouchableOpacity>
-                            <Image source={like} />
+                    <View style={styles.commentCont}>
+                            <TouchableOpacity>
+                                <Image style={styles.commentPhoto} source={avatar5} />
+                            </TouchableOpacity>
+                            <Text style={styles.commentName}>Gabriela Silva</Text>
+                            <Text>Horrivel, não gostei...</Text>
+                        </View>
+                        <TouchableOpacity 
+                            onPress={()=>{
+                            setLiked(!liked)
+                            }}>
+                         <Image
+                                source={!liked
+                                ? require("../Feed/images/heart.png")
+                                : require("../Feed/images/heart-outline.png")
+                            }
+                            style={{height: 20, width: 20}}
+                            resizeMode="cover"
+                            />
                         </TouchableOpacity>
                     </View>
                     <View style={styles.commentLine}>
-                        <Text style={styles.commentPhoto}>Foto</Text>
-                        <Text style={styles.commentName}>Raimunda de Jesus</Text>
-                        <Text style={styles.commentCont}>Encantada...</Text>
-                        <TouchableOpacity>
-                            <Image source={like} />
-                        </TouchableOpacity>
-                    </View><View style={styles.commentLine}>
-                        <Text style={styles.commentPhoto}>Foto</Text>
-                        <Text style={styles.commentName}>Jurubeba Rios</Text>
-                        <Text style={styles.commentCont}>Eiiitaaa q perfeição!!!!</Text>
-                        <TouchableOpacity>
-                            <Image source={like} />
+                    <View style={styles.commentCont}>
+                            <TouchableOpacity>
+                                <Image style={styles.commentPhoto} source={avatar6} />
+                            </TouchableOpacity>
+                            <Text style={styles.commentName}>Raimunda de Jesus</Text>
+                            <Text>Fiquei encatada demais...</Text>
+                        </View>
+                        <TouchableOpacity 
+                            onPress={()=>{
+                            setLiked(!liked)
+                            }}>
+                         <Image
+                                source={!liked
+                                ? require("../Feed/images/heart.png")
+                                : require("../Feed/images/heart-outline.png")
+                            }
+                            style={{height: 20, width: 20}}
+                            resizeMode="cover"
+                            />
                         </TouchableOpacity>
                     </View>
                     <View style={styles.commentLine}>
-                        <Text style={styles.commentPhoto}>Foto</Text>
-                        <Text style={styles.commentName}>Renata Freitas</Text>
-                        <Text style={styles.commentCont}>ai ai, assim vc me mata!</Text>
-                        <TouchableOpacity>
-                            <Image source={like} />
+                    <View style={styles.commentCont}>
+                            <TouchableOpacity>
+                                <Image style={styles.commentPhoto} source={avatar7} />
+                            </TouchableOpacity>
+                            <Text style={styles.commentName}>Jurubeba Rios</Text>
+                            <Text>Eiiitaaa q perfeição!!!!</Text>
+                        </View>
+                        <TouchableOpacity 
+                            onPress={()=>{
+                            setLiked(!liked)
+                            }}>
+                         <Image
+                                source={!liked
+                                ? require("../Feed/images/heart.png")
+                                : require("../Feed/images/heart-outline.png")
+                            }
+                            style={{height: 20, width: 20}}
+                            resizeMode="cover"
+                            />
                         </TouchableOpacity>
                     </View>
                     <View style={styles.commentLine}>
-                        <Text style={styles.commentPhoto}>Foto</Text>
-                        <Text style={styles.commentName}>Gustavo Petrovk</Text>
-                        <Text style={styles.commentCont}>Mais ou menos...</Text>
-                        <TouchableOpacity>
-                            <Image source={like} />
+                    <View style={styles.commentCont}>
+                            <TouchableOpacity>
+                                <Image style={styles.commentPhoto} source={avatar8} />
+                            </TouchableOpacity>
+                            <Text style={styles.commentName}>Renato Freitas</Text>
+                            <Text>ai ai, assim vc me mata!</Text>
+                        </View>
+                        <TouchableOpacity 
+                            onPress={()=>{
+                            setLiked(!liked)
+                            }}>
+                         <Image
+                                source={!liked
+                                ? require("../Feed/images/heart.png")
+                                : require("../Feed/images/heart-outline.png")
+                            }
+                            style={{height: 20, width: 20}}
+                            resizeMode="cover"
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.commentLine}>
+                    <View style={styles.commentCont}>
+                            <TouchableOpacity>
+                                <Image style={styles.commentPhoto} source={avatar9} />
+                            </TouchableOpacity>
+                            <Text style={styles.commentName}>Gustavo Petrovk</Text>
+                            <Text>Achei mais ou menos...</Text>
+                        </View>
+                        <TouchableOpacity 
+                            onPress={()=>{
+                            setLiked(!liked)
+                            }}>
+                         <Image
+                                source={!liked
+                                ? require("../Feed/images/heart.png")
+                                : require("../Feed/images/heart-outline.png")
+                            }
+                            style={{height: 20, width: 20}}
+                            resizeMode="cover"
+                            />
                         </TouchableOpacity>
                     </View>
 
@@ -145,6 +283,11 @@ const styles = StyleSheet.create(
             fontSize: 15,
             fontWeight: 'bold',
             paddingRight: 5,
+        },
+        commentCont: {
+            alignItems: "center",
+            flexDirection: 'row',
+            justifyContent: 'flex-start',
         },
         commentSubmit: {
             paddingTop: 20,

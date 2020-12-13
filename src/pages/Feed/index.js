@@ -1,16 +1,18 @@
-import { StyleSheet, Text, Image, FlatList, Button, View, ScrollView, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, Image, FlatList, Button, View, ScrollView, TextInput, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import React, { useState, useEffect, useCallback } from 'react';
 import LazyImage from '../../components/LazyImage';
 import { AsyncStorage } from 'react-native';
 import axios from 'axios';
+
+// import DoubleTap from './DoubleTap';
 
 import comment from '../../../assets/comment.png';
 import like from '../../../assets/like.png';
 import send from '../../../assets/send.png';
 import save from '../../../assets/save.png';
 
-import { Container, Post, Header, Avatar, Name, Description, Loading } from './styles';
-import { withTheme } from 'styled-components';
+import { Container, Post, Header, Avatar, Name, Description, Loading, ActionButton } from './styles';
+// import { withTheme } from 'styled-components';
 
 export default function Feed({ navigation }) {
   const [error, setError] = useState('');
@@ -22,6 +24,8 @@ export default function Feed({ navigation }) {
   const [refreshing, setRefreshing] = useState(false);
   const [text, setText] = useState('')
   const [comentarios, setComentarios] = useState([])
+
+  
 
   const MAX_LENGTH = 250;
 
@@ -82,6 +86,8 @@ export default function Feed({ navigation }) {
     loadPage()
   }, []);
 
+ 
+  const [liked, setLiked] = useState(false);
 
   const renderItem = ({ item }) => {
     return (
@@ -102,11 +108,21 @@ export default function Feed({ navigation }) {
         <View style={styles.footer}>
           <View style={styles.actions}>
             <View style={styles.leftActions}>
-              <TouchableOpacity style={styles.action}>
-                <Image
-                  source={like}
-                />
-              </TouchableOpacity>
+
+
+            <TouchableOpacity 
+              onPress={()=>{
+              setLiked(!liked)
+            }}>
+            <Image
+              source={liked
+                  ? require("./images/heart.png")
+                  : require("./images/heart-outline.png")
+              }
+              style={{height: 20, width: 20}}
+              resizeMode="cover"
+            />
+          </TouchableOpacity>
               <TouchableOpacity style={styles.action}>
                 <Image
                   source={comment}
@@ -296,6 +312,18 @@ const styles = StyleSheet.create(
     subtitle: {
       flexDirection: 'row',
       paddingVertical: 5
+    },
+    iconRow: {
+      flexDirection: "row",
+      alignSelf: "stretch",
+      marginTop: 10,
+      paddingVertical: 5,
+      paddingHorizontal: 15
+    },
+    heartIcon: {
+      width: 20,
+      height: 20
     }
+    
 
   })

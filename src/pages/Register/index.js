@@ -21,7 +21,7 @@ export default function index({ navigation }) {
 
     const [offset] = useState(new Animated.ValueXY({ x: 0, y: 80 }))
     const [opacity] = useState(new Animated.Value(0));
-    const [logo] = useState(new Animated.ValueXY({ x: 190, y: 54 }));
+    const [logo] = useState(new Animated.ValueXY({ x: 190, y: 190 }));
 
     useEffect(() => {
         Animated.parallel([
@@ -47,7 +47,7 @@ export default function index({ navigation }) {
                         width: logo.x,
                         height: logo.y,
                     }}
-                    source={require('../../../assets/logo.png')} />
+                    source={require('../../../assets/profile.png')} />
             </View>
 
             <Animated.View
